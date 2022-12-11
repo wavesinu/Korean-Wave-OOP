@@ -4,23 +4,24 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Stream;
 
-public class KmoviesFileControl implements FileReadControl {
-    Path path = Paths.get("kmovie.txt");
-    public void readMoviesInfo() {
+public class KdramaFileControl implements FileReadControl {
+    Path path = Paths.get("kdrama.txt");
+    public void readDramaName() {
         try (Stream<String> lines = Files.lines(path)) {
-            System.out.print("K-movie 대표 영화들은 다음과 같습니다.\n");
-            lines.skip(1).takeWhile(line -> !line.startsWith("[해당 영화 정보]")).forEach(System.out::println);
+            System.out.print("Netflix 흥행 순위를 기준으로 선별하였으며, Kdrama 대표 작품들은 다음과 같습니다.\n");
+            lines.skip(1).takeWhile(line -> !line.startsWith("[해당 드라마 정보]")).forEach(System.out::println);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void readDetailInfo() {
-        String keyword = "[해당 영화 정보]";
+        String keyword = "[해당 드라마 정보]";
         try {
-            FileReader fr = new FileReader("kmovie.txt");
+            FileReader fr = new FileReader("kdrama.txt");
             BufferedReader br = new BufferedReader(fr);
 
             String line;
@@ -39,10 +40,11 @@ public class KmoviesFileControl implements FileReadControl {
             throw new RuntimeException(e);
         }
     }
+
     @Override
     public void readAll() {
         try {
-            File file = new File("kmovie.txt");
+            File file = new File("kdrama.txt");
             FileReader file_reader = new FileReader(file);
             int cur;
 
