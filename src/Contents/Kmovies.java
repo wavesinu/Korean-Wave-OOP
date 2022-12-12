@@ -3,18 +3,18 @@ package Contents;
 import java.util.*;
 
 public class Kmovies implements HallyuContent {
-    public String movieName;
-    public String director;
-    public List<String> actorList;
+    public String movieName;    // 영화 제목
+    public String director; // 영화 감독
+    public List<String> actorList;  // 영화 출연진
 
-    Kmovies(String movieName, String director, List<String> actorList) {
+    Kmovies(String movieName, String director, List<String> actorList) {    // 생성자 선언
         this.movieName = movieName;
         this.director = director;
         this.actorList = actorList;
     }
 
     @Override
-    public void printInfo() {
+    public void printInfo() {   // 함수 오버라이딩
         System.out.println("영화명: " + movieName);
         System.out.println("감독: " + director);
         System.out.println("배우: " + actorList);

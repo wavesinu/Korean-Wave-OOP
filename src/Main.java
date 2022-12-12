@@ -8,22 +8,24 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        enum Menu {
+        enum Menu {         // 메뉴 출력을 위한 열거형 선언
             KPOP, KMOVIES, KDRAMA, EXIT
         }
 
         System.out.println("한류 컨텐츠에 관한 정보를 출력하는 프로그램입니다.");
+        // 메뉴 출력
         while (true) {
             System.out.println("알고싶은 한류 컨텐츠 분야를 선택해주세요.");
             System.out.println("-------------------------------------------------------------------");
             System.out.println("|    1. " + Menu.KPOP + "    |    2." + Menu.KDRAMA + "    |    3." + Menu.KMOVIES + "    |    4." + Menu.EXIT + "    |");
             System.out.println("-------------------------------------------------------------------");
 
+            // 사용자 메뉴 선택
             System.out.print("Select Menu: ");
             Scanner sc = new Scanner(System.in);
             String userChoice = sc.nextLine();
 
-            switch (userChoice) {
+            switch (userChoice) { // 사용자의 선택에 따라 프로그램 수행
                 case "1" -> {   // K-pop 관련 정보 출력
                     KpopFileControl kpopFileControl = new KpopFileControl();
                     System.out.println("K-pop에 관한 정보를 알고싶으시군요?");
@@ -88,11 +90,11 @@ public class Main {
                     }
 
                 }
-                case "4" -> {
+                case "4" -> {   // 프로그램 종료
                     System.out.println("프로그램을 종료합니다.");
                     System.exit(0);
                 }
-                default -> System.out.println("잘못 입력하셨습니다.");
+                default -> System.out.println("잘못 입력하셨습니다.");   // 잘못된 입력이 들어올 경우
 
             }
         }

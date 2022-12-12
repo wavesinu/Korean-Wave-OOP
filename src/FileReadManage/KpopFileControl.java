@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class KpopFileControl implements FileReadControl {
-    Path path = Paths.get("kpop.txt");
+    Path path = Paths.get("kpop.txt");  // 데이터 파일 경로 지정
 
-    public void readGroupName() {
+    public void readGroupName() {   // 그룹 이름을 불러오는 메서드
         try (Stream<String> lines = Files.lines(path)) {
             System.out.print("Kpop 대표가수들은 다음과 같습니다.\n");
-            lines.skip(1).takeWhile(line -> !line.startsWith("[대표곡]")).forEach(System.out::println);
+            lines.skip(1).takeWhile(line -> !line.startsWith("[대표곡]")).forEach(System.out::println);    // 대표곡 키워드가 나오기 전까지의 내용을 불러옴
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,7 +29,7 @@ public class KpopFileControl implements FileReadControl {
         }
     }
 
-    public void readBillboard() {
+    public void readBillboard() {   // 빌보드 차트 기록을 불러오는 메서드
         String keyword = "[빌보드 차트 기록]";
         try {
             FileReader fr = new FileReader("kpop.txt");
@@ -53,7 +53,7 @@ public class KpopFileControl implements FileReadControl {
     }
 
     @Override
-    public void readAll() {
+    public void readAll() { // 데이터 파일의 내용을 전부 불러오는 함수
         // 전체 파일 읽기
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(System.out::println);

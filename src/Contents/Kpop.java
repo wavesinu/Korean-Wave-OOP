@@ -3,11 +3,11 @@ package Contents;
 import java.util.*;
 
 public class Kpop implements HallyuContent {
-    public String groupName;
-    public String agency;
-    public List<String> memberList;
+    public String groupName;    // 그룹 이름
+    public String agency;   // 소속사
+    public List<String> memberList; // 멤버 리스트
 
-    Kpop(String groupName, String agency, List<String> memberList) {
+    Kpop(String groupName, String agency, List<String> memberList) {    // 생성자 선언
         this.groupName = groupName;
         this.agency = agency;
         this.memberList = memberList;
@@ -15,7 +15,7 @@ public class Kpop implements HallyuContent {
 
 
     @Override
-    public void printInfo() {
+    public void printInfo() {   // 함수 오버라이딩
         System.out.println("그룹명: " + groupName);
         System.out.println("소속사: " + agency);
         System.out.println("멤버: " + memberList);

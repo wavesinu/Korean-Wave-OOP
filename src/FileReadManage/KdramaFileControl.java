@@ -8,18 +8,19 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class KdramaFileControl implements FileReadControl {
-    Path path = Paths.get("kdrama.txt");
-    public void readDramaName() {
+    Path path = Paths.get("kdrama.txt");    // 데이터 파일 경로 지정
+
+    public void readDramaName() {   // 드라마 이름을 불러오는 메서드
         try (Stream<String> lines = Files.lines(path)) {
             System.out.print("Netflix 흥행 순위를 기준으로 선별하였으며, Kdrama 대표 작품들은 다음과 같습니다.\n");
-            lines.skip(1).takeWhile(line -> !line.startsWith("[해당 드라마 정보]")).forEach(System.out::println);
+            lines.skip(1).takeWhile(line -> !line.startsWith("[해당 드라마 정보]")).forEach(System.out::println);  // 드라마 정보 키워드가 나오기 전까지의 내용을 읽어들임
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void readDetailInfo() {
-        String keyword = "[해당 드라마 정보]";
+    public void readDetailInfo() {  // 드라마 상세 정보를 불러오는 메서드
+        String keyword = "[해당 드라마 정보]"; // 시작 키워드
         try {
             FileReader fr = new FileReader("kdrama.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -42,7 +43,7 @@ public class KdramaFileControl implements FileReadControl {
     }
 
     @Override
-    public void readAll() {
+    public void readAll() { // 데이터 파일의 내용을 전부 불러오는 함수
         try {
             File file = new File("kdrama.txt");
             FileReader file_reader = new FileReader(file);
