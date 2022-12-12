@@ -1,3 +1,5 @@
+import Contents.Kmovies;
+import Contents.Kpop;
 import FileReadManage.KdramaFileControl;
 import FileReadManage.KmoviesFileControl;
 import FileReadManage.KpopFileControl;
